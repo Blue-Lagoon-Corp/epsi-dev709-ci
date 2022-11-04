@@ -1,7 +1,5 @@
 package academy.certif.erphrense.service;
 
-import static org.junit.Assert.assertTrue;
-
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -9,6 +7,8 @@ import academy.certif.erphrense.domain.Cancelable;
 import academy.certif.erphrense.domain.Ticket;
 import academy.certif.erphrense.provider.CancelableProvider;
 import academy.certif.erphrense.provider.TicketProvider;
+
+import static org.junit.Assert.*;
 
 public class BookingServiceTest 
 {
@@ -25,9 +25,32 @@ public class BookingServiceTest
     public void book_shoudReturn_aReference()
     {
         Ticket ticket = new Ticket("Annie Versaire", "01/01/2021 16:30", "Paris", "New-York", 0);
-        assertTrue(ticket.getReference() == 0);
+        assertEquals(0, ticket.getReference());
         Cancelable result = BookingServiceTest.bookingService.book(null, ticket);
         ticket = (Ticket) result;
         assertTrue(ticket.getReference() != 0);
+    }
+
+    @Test
+    public void cancel_shouldReturnTrueIfBooking()
+    {
+        Ticket ticket = new Ticket("Annie Versaire", "01/01/2021 16:30", "Paris", "New-York", 0);
+        assertEquals(0, ticket.getReference());
+        Cancelable result = BookingServiceTest.bookingService.book(null, ticket);
+        ticket = (Ticket) result;
+        assertTrue(BookingServiceTest.bookingService.cancel(ticket.getReference()));
+    }
+
+    @Test
+    public void cancel_shouldReturnFalseIfBookingNotExists()
+    {
+        assertFalse(BookingServiceTest.bookingService.cancel(0));
+    }
+
+    @Test
+    public void textNull_shouldRaiseException()
+    {
+        //Text text = new Text("");
+
     }
 }
