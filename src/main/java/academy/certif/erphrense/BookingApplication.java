@@ -26,13 +26,13 @@ public class BookingApplication {
 				System.out.print("Veuillez saisir le nom complet du passager : ");
 				text = scanner.nextLine();
 				dto.setPerson(text);
-				System.out.print("Veuillez saisir la date et heure de d�part : ");
+				System.out.print("Veuillez saisir la date et heure de départ : ");
 				text = scanner.nextLine();
 				dto.setDeparture(text);
-				System.out.print("Veuillez saisir la ville de d�part : ");
+				System.out.print("Veuillez saisir la ville de départ : ");
 				text = scanner.nextLine();
 				dto.setFrom(text);
-				System.out.print("Veuillez saisir la ville d'arriv�e : ");
+				System.out.print("Veuillez saisir la ville d'arrivée : ");
 				text = scanner.nextLine();
 				dto.setTo(text);
 				
@@ -41,7 +41,7 @@ public class BookingApplication {
 				
 			} else if (text.equals("2")) {
 				
-				System.out.print("Veuillez saisir la r�f�rence de la reservation : ");
+				System.out.print("Veuillez saisir la référence de la reservation : ");
 				text = scanner.nextLine();
 				boolean result = controller.cancel(text);
 				if (result) {
