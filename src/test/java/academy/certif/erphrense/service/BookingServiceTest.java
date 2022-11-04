@@ -1,5 +1,6 @@
 package academy.certif.erphrense.service;
 
+import mock.MockTicketProvider;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -12,12 +13,12 @@ import static org.junit.Assert.*;
 
 public class BookingServiceTest 
 {
-    private static CancelableProvider ticketProvider;
+    private static MockTicketProvider ticketProvider;
     private static BookingService bookingService;
 
     @BeforeClass
     public static void init() {
-        BookingServiceTest.ticketProvider = new TicketProvider();
+        BookingServiceTest.ticketProvider = new MockTicketProvider();
         BookingServiceTest.bookingService = new BookingService(ticketProvider);
     }
 
@@ -39,11 +40,5 @@ public class BookingServiceTest
         Cancelable result = BookingServiceTest.bookingService.book(null, ticket);
         ticket = (Ticket) result;
         assertTrue(BookingServiceTest.bookingService.cancel(ticket.getReference()));
-    }
-
-    @Test
-    public void cancel_shouldReturnFalseIfBookingNotExists()
-    {
-        assertFalse(BookingServiceTest.bookingService.cancel(0));
     }
 }

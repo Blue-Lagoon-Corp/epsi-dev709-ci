@@ -10,9 +10,9 @@ public abstract class CancelableProvider {
 	protected Collection<Cancelable> data;
 	
 	public boolean delete(int reference) {
-		
-		Collection<Cancelable> results = new ArrayList<Cancelable>();
-		
+
+		Collection<Cancelable> results = new ArrayList<>();
+
 		boolean found = false;
 		for (Cancelable element : this.data) {
 			if (element.getReference() != reference) {
