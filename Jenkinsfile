@@ -2,19 +2,24 @@ pipeline {
     agent any
 
     stages {
+        stage('Clean') {
+            steps {
+                echo 'Cleaning Workspace...'
+            }
+        }
         stage('Build') {
             steps {
-                echo 'Building..'
+                echo 'Building...'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                echo 'Testing...'
             }
         }
-        stage('Deploy') {
+        stage('Integration') {
             steps {
-                echo 'Deploying....'
+                echo 'Integration....'
             }
         }
     }
