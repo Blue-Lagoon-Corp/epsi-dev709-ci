@@ -5,7 +5,6 @@ pipeline {
         stage('Clean') {
             steps {
                 echo 'Cleaning Workspace...'
-                mvn --version
             }
         }
         stage('Build') {
