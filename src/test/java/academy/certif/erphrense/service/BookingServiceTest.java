@@ -28,7 +28,7 @@ public class BookingServiceTest
         assertEquals(0, ticket.getReference());
         Cancelable result = BookingServiceTest.bookingService.book(null, ticket);
         ticket = (Ticket) result;
-        assertTrue(ticket.getReference() != 0);
+        assertNotEquals(ticket.getReference(), 0);
     }
 
     @Test
@@ -45,12 +45,5 @@ public class BookingServiceTest
     public void cancel_shouldReturnFalseIfBookingNotExists()
     {
         assertFalse(BookingServiceTest.bookingService.cancel(0));
-    }
-
-    @Test
-    public void textNull_shouldRaiseException()
-    {
-        //Text text = new Text("");
-
     }
 }
