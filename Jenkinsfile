@@ -16,6 +16,7 @@ pipeline {
                     bat './mvnw package'
                     bat 'rename target\\erphrense-0.0.1-SNAPSHOT.jar erphrense-%BUILD_NUMBER%.jar'
                     archiveArtifacts artifacts: 'target\\erphrense-*.jar', followSymlinks: false
+                }
             }
         }
     }
