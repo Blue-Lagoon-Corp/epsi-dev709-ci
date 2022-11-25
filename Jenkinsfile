@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch; 'main', url: 'https://github.com/Les-chomeurs/epsi-dev709-ci.git' 
+                git branch: 'main', url: 'https://github.com/Les-chomeurs/epsi-dev709-ci.git' 
             }
         }
         stage('Clean') {
