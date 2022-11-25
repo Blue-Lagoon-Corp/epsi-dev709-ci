@@ -7,24 +7,30 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/Les-chomeurs/epsi-dev709-ci.git' 
             }
         }
-        dir('C:/ProgramData/Jenkins/.jenkins/workspace/erphrence-improved'){
-            stage('Clean') {
+        stage('Clean') {
                 steps {
-                    bat './mvnw clean'
+                    dir('C:/ProgramData/Jenkins/.jenkins/workspace/erphrence-improved'){
+                        bat './mvnw clean'
+                    }
                 }
             }
-            stage('Compile'){
-                steps{
+        stage('Compile'){
+            steps{
+                dir('C:/ProgramData/Jenkins/.jenkins/workspace/erphrence-improved'){
                     bat './mvnw compile'
                 }
             }
-            stage('Test'){
-                steps{
+        }
+        stage('Test'){
+            steps{
+                dir('C:/ProgramData/Jenkins/.jenkins/workspace/erphrence-improved'){
                     bat './mvnw test'
                 }
             }
-            stage('Package'){
-                steps{
+        }
+        stage('Package'){
+            steps{
+                dir('C:/ProgramData/Jenkins/.jenkins/workspace/erphrence-improved'){
                     bat './mvnw package'
                     bat 'rename target\\erphrense-0.0.1-SNAPSHOT.jar erphrense-%BUILD_NUMBER%.jar'
                     archiveArtifacts artifacts: 'target\\erphrense-*.jar', followSymlinks: false 
